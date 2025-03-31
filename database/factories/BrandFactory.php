@@ -10,14 +10,57 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 class BrandFactory extends Factory
 {
     /**
-     * Define the model's default state.
+     * Define test brand objects data structure
      *
-     * @return array<string, mixed>
+     * @return array{name: string}
      */
     public function definition(): array
     {
+        $carBrands = [
+            'Ford',
+            'Ford',
+            'Chevrolet',
+            'Chevrolet',
+            'Dodge',
+            'Dodge',
+            'Tesla',
+            'Tesla',
+            'BMW',
+            'BMW',
+            'Audi',
+            'Audi',
+            'Mercedes-Benz',
+            'Mercedes-Benz',
+            'Toyota',
+            'Toyota',
+            'Nissan',
+            'Nissan',
+            'Honda',
+            'Honda',
+            'Subaru',
+            'Subaru',
+            'Lamborghini',
+            'Lamborghini',
+            'Ferrari',
+            'Ferrari',
+            'Porsche',
+            'Porsche',
+            'McLaren',
+            'McLaren',
+            'Aston Martin',
+            'Aston Martin',
+            'Jaguar',
+            'Jaguar',
+            'Mazda',
+            'Mazda',
+            'Volkswagen',
+            'Volkswagen',
+            'Hyundai',
+            'Hyundai'
+        ];
+
         return [
-            //
+            'name' => $this.fake()->randomElement($carBrands)
         ];
     }
 }
