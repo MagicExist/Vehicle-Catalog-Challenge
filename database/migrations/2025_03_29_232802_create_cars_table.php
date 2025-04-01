@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('description',100);
             $table->decimal('price',10,2);
             $table->decimal('mileage',10,2);
+            $table->timestamps();
         });
     }
 

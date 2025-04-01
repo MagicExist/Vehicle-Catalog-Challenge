@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('brand_by_car', function (Blueprint $table) {
             $table->foreignId('car_id')->references('car_id')->on('cars')->onDelete('cascade');
             $table->foreignId('brand_id')->references('brand_id')->on('brands')->onDelete('cascade');
+            $table->primary(['car_id', 'brand_id']);
         });
     }
 

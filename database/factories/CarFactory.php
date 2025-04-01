@@ -63,7 +63,7 @@ class CarFactory extends Factory
 
         return [
             'model' => $this->faker->randomElement($carModels),
-            'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            'description' => 'Lorem ipsum dolor sit amet',
             'price' => $this->faker->randomFloat(2,5000,20000),
             'mileage' => $this->faker->randomFloat(2,0,1000)
         ];
@@ -75,7 +75,7 @@ class CarFactory extends Factory
             // Attach brand to the car after creating
             $brand = Brand::inRandomOrder()->first();
             if($brand){
-                $car->brands()->attach($brand->id);
+                $car->brands()->attach($brand->brand_id);
             }
         });
     }
