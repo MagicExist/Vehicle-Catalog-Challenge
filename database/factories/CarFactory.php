@@ -73,8 +73,10 @@ class CarFactory extends Factory
     {
         return $this->afterCreating(function (Car $car){
             // Attach brand to the car after creating
-            $brand = Brand::inRandomOrder()->take(1)->get();
-            $car->brands()->attach($brand);
+            $brand = Brand::inRandomOrder()->first();
+            if($brand){
+                $car->brands()->attach($brand->id);
+            }
         });
     }
 }
