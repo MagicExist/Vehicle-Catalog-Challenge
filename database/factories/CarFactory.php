@@ -62,10 +62,10 @@ class CarFactory extends Factory
         ]; 
 
         return [
-            'model' => fake()->randomElement($carModels),
+            'model' => $this->faker->randomElement($carModels),
             'description' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            'price' => fake()->randomFloat(2,5000,20000),
-            'mileage' => fake()->randomFloat(2,0,1000)
+            'price' => $this->faker->randomFloat(2,5000,20000),
+            'mileage' => $this->faker->randomFloat(2,0,1000)
         ];
     }
 
