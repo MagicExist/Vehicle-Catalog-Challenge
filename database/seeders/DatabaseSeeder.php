@@ -14,8 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+        //Create 10 brands
         Brand::factory(10)->create();
 
+        //Create 20 cars and attach one brand per car
         Car::factory(20)->create();
     }
 }
