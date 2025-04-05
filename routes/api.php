@@ -13,4 +13,5 @@ Route::prefix("cars")->group(function(){
     Route::get("/{id}",[CarController::class,'show']);
     Route::post("",[CarController::class,'store']);
     Route::put("/{id}",[CarController::class,'update']);
+    Route::delete("/{id}",[CarController::class,'destroy']);
 });

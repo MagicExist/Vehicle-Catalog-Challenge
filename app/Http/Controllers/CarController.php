@@ -100,6 +100,15 @@ class CarController
      */
     public function destroy(string $id)
     {
-        //
+        $car = Car::find($id);
+        if(!$car){
+            return response()->json([
+                'message' => "car with id $id not found"
+            ],404);
+        }
+        $car->delete();
+        return response()->json([
+            'message' => "Car wit id $id deleted successfully"
+        ],200);
     }
 }
