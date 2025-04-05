@@ -13,7 +13,7 @@ class CarController
      */
     public function index()
     {
-        return Car::all();
+        return Car::all()->load('brands');
     }
 
     /**
