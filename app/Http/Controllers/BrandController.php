@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Brand;
 use Illuminate\Http\Request;
 
 class BrandController
@@ -11,7 +12,7 @@ class BrandController
      */
     public function index()
     {
-        //
+        return Brand::all();
     }
 
     /**

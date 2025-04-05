@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CarController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -15,4 +16,8 @@ Route::prefix("cars")->group(function(){
     Route::put("/{id}",[CarController::class,'update']);
     Route::put("/{id}/brand",[CarController::class,'UpdateBrand']);
     Route::delete("/{id}",[CarController::class,'destroy']);
+});
+
+Route::prefix("brands")->group(function(){
+    Route::get("",[BrandController::class,'index']);
 });
