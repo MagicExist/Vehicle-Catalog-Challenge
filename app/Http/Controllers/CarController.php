@@ -95,6 +95,34 @@ class CarController
         ],200);
     }
 
+     /**
+     * Update the specified resource in storage wit brand.
+     */
+    public function UpdateBrand(Request $request, string $id)
+    {
+        try{
+            $carValidated = $request->validate([
+                'brand_id' => 'required|exists:brands'
+            ]);
+        }
+        catch(ValidationException $e){
+            return response()->json([
+                'message' => 'Incorrect data model',
+                "error" => $e->errors()
+            ],400);
+        }
+        $car = Car::find($id);
+        if(!$car){
+            return response()->json([
+                'message' => "car with id $id not found"
+            ],404);
+        }
+        $car->brands()->sync($carValidated['brand_id']);
+        return response()->json([
+            'car' => $car->load('brands')
+        ],200);
+    }
+
     /**
      * Remove the specified resource from storage.
      */
