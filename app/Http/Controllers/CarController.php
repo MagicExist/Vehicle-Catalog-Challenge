@@ -69,7 +69,30 @@ class CarController
      */
     public function update(Request $request, string $id)
     {
-        //
+        try{
+            $carValidated = $request->validate([
+                'model' => 'required|string|max:30',
+                'description' => 'required|string|max:100',
+                'price' => 'required|decimal:2',
+                'mileage' => 'required|decimal:2',
+            ]);
+        }
+        catch(ValidationException $e){
+            return response()->json([
+                'message' => 'Incorrect data model',
+                "error" => $e->errors()
+            ],400);
+        }
+        $car = Car::find($id);
+        if(!$car){
+            return response()->json([
+                'message' => "car with id $id not found"
+            ],404);
+        }
+        $car->update($carValidated);
+        return response()->json([
+            'car' => $car
+        ],200);
     }
 
     /**
