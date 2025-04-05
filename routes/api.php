@@ -11,4 +11,5 @@ Route::get('/user', function (Request $request) {
 Route::prefix("cars")->group(function(){
     Route::get("",[CarController::class,'index']);
     Route::get("/{id}",[CarController::class,'show']);
+    Route::post("",[CarController::class,'store']);
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Car;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class CarController
 {
@@ -20,7 +21,31 @@ class CarController
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $carValidated = $request->validate([
+                'model' => 'required|string|max:30',
+                'description' => 'required|string|max:100',
+                'price' => 'required|decimal:2',
+                'mileage' => 'required|decimal:2',
+                'brand_id' => 'required|exists:brands'
+            ]);
+        }
+        catch(ValidationException $e){
+            return response()->json([
+                'message' => 'Incorrect data model',
+                "error" => $e->errors()
+            ],400);
+        }
+        $brand_id = $carValidated['brand_id'];
+        unset($carValidated['brands']);
+
+        $car = Car::create($carValidated);
+        $car->brands()->attach($brand_id);
+
+        return response()->json([
+            'car' => $car->load('brands')
+        ],201);
+
     }
 
     /**
