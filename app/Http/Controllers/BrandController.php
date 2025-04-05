@@ -28,7 +28,15 @@ class BrandController
      */
     public function show(string $id)
     {
-        //
+        $brand = Brand::find($id);
+        if(!$brand){
+            return response()->json([
+                'message' => "brand with id $id not found"
+            ],404);
+        }
+        return response()->json([
+            'brand' => $brand
+        ],200);
     }
 
     /**
