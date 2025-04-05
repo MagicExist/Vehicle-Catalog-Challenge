@@ -60,7 +60,7 @@ class CarController
             ],404);
         }
         return response()->json([
-            'car' => $car
+            'car' => $car->load('brands')
         ],200);
     }
 
