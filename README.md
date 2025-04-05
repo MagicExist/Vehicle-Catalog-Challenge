@@ -1,15 +1,13 @@
 # 🚗 Vehicle Catalog Challenge
 
-This project is a technical challenge focused on building a web server that manages a functional vehicle catalog with full CRUD operations. The goal is to implement best practices, containerization with Docker, unit testing, and more.
+This project is a technical challenge focused on building a web server that manages a functional vehicle catalog with full CRUD operations.
 
 ## ✨ Features
 - Create, read, update, and delete vehicles  
-- Follows best coding practices  
-- Dockerized environment  
-- Unit testing for reliability
-## 👥 Authors  
+- Follows best coding practices   
+- Factories and seeder database
 
-- [@Johhan Parra](https://github.com/MagicExist)  
+ 
 ## 📁 Repository Structure
 
 ```bash
@@ -31,3 +29,57 @@ This project is a technical challenge focused on building a web server that mana
 ├── 📄 composer.json    # PHP dependencies
 ├── 📄 README.md        # Project documentation
 └── ...
+```
+
+## 🎯 Installation Guide
+### 🏁Prerequisites 
+Before installing this Laravel project, make sure your system meets the following requirements:
+
+- PHP >= 8.1
+- Composer
+- PostgreSQL
+- Node.js & NPM (for frontend assets)
+- Git
+
+### 🚀Installation Steps
+1. __Clone the Repository__
+```bash
+clone https://github.com/yourusername/your-project-name.git
+cd your-project-name
+```
+2. __Install PHP Dependencies__
+```bash
+composer install
+```
+3. __Configure Environment Variables__
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+4. __Edit the .env file to configure your database connection__
+```env
+DB_CONNECTION=pgsql
+DB_HOST=127.0.0.1
+DB_PORT=5432
+DB_DATABASE=your_database_name
+DB_USERNAME=your_database_username
+DB_PASSWORD=your_database_password
+```
+5. __Set Up the Database__
+```bash
+php artisan migrate
+To include seed data (optional):
+php artisan db:seed
+```
+6. __Start the Development Server__
+```bash
+php artisan serve
+```
+__✅Your application should now be running.__
+
+## 📌 Contribution
+Please remember to check the [CONTRIBUTING.md](https://github.com/MagicExist/Vehicle-Catalog-Challenge/blob/main/CONTRIBUTING.md)  file before making any contributions.
+
+## 👥 Authors  
+
+- [@Johhan Parra](https://github.com/MagicExist) 
