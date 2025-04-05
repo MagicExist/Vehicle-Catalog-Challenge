@@ -28,7 +28,15 @@ class CarController
      */
     public function show(string $id)
     {
-        //
+        $car = Car::find($id);
+        if(!$car){
+            return response()->json([
+                'message' => "car with id $id not found"
+            ],404);
+        }
+        return response()->json([
+            'car' => $car
+        ],200);
     }
 
     /**
