@@ -61,7 +61,31 @@ class BrandController
      */
     public function update(Request $request, string $id)
     {
-        //
+        try{
+            $brandValidated = $request->validate([
+                'name' => 'required|string|max:20',
+            ]);
+        }
+        catch(ValidationException $e){
+            return response()->json([
+                'message' => 'Incorrect data model',
+                "error" => $e->errors()
+            ],400);
+        }
+
+        $brand = Brand::find($id);
+
+        if(!$brand){
+            return response()->json([
+                'message' => "brand with id $id not found"
+            ],404);
+        }
+
+        $brand->update($brandValidated);
+
+        return response()->json([
+            'brand' => $brand
+        ],200);
     }
 
     /**
