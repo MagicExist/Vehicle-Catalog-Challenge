@@ -93,6 +93,18 @@ class BrandController
      */
     public function destroy(string $id)
     {
-        //
+        $brand = Brand::find($id);
+
+        if(!$brand){
+            return response()->json([
+                'message' => "brand with id $id not found"
+            ],404);
+        }
+
+        $brand->delete($id);
+
+        return response()->json([
+            'message' => "Brand wit id $id deleted successfully"
+        ],200);
     }
 }

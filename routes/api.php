@@ -23,4 +23,5 @@ Route::prefix("brands")->group(function(){
     Route::get("/{id}",[BrandController::class,'show']);
     Route::post("",[BrandController::class,'store']);
     Route::put("/{id}",[BrandController::class,'update']);
+    Route::delete("/{id}",[BrandController::class,'destroy']);
 });
