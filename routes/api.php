@@ -21,4 +21,5 @@ Route::prefix("cars")->group(function(){
 Route::prefix("brands")->group(function(){
     Route::get("",[BrandController::class,'index']);
     Route::get("/{id}",[BrandController::class,'show']);
+    Route::post("",[BrandController::class,'store']);
 });

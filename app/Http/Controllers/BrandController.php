@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 
 class BrandController
 {
@@ -20,7 +21,23 @@ class BrandController
      */
     public function store(Request $request)
     {
-        //
+        try{
+            $brandValidated = $request->validate([
+                'name' => 'required|string|max:20',
+            ]);
+        }
+        catch(ValidationException $e){
+            return response()->json([
+                'message' => 'Incorrect data model',
+                "error" => $e->errors()
+            ],400);
+        }
+
+        $brand = Brand::create($brandValidated);
+
+        return response()->json([
+            'brand' => $brand
+        ],201);
     }
 
     /**
